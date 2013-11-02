@@ -4,7 +4,11 @@
  */
 package IGrafica;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
 /**
  *
@@ -84,7 +88,15 @@ public class Panel extends javax.swing.JPanel {
     private void fotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fotoButtonActionPerformed
         JOptionPane.showMessageDialog(fotoButton.getTopLevelAncestor(), "Olha a foto!", "Foto!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_fotoButtonActionPerformed
-
+    public void panelPrint(String msg){
+        Document doc = outputTextPane.getDocument();
+        try {
+            msg = msg + "\n";
+            doc.insertString(doc.getLength(), msg, null);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private IGrafica.BotoesPanel botoesPanel1;
     private javax.swing.JButton fotoButton;

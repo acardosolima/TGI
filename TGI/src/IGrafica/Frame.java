@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package IGrafica;
+import arduino.Socket;
 
 /**
  *
@@ -15,6 +16,7 @@ public class Frame extends javax.swing.JFrame {
      */
     public Frame() {
         initComponents();
+        startSocket();
     }
 
     /**
@@ -85,6 +87,13 @@ public class Frame extends javax.swing.JFrame {
                 new Frame().setVisible(true);
             }
         });
+    }
+    
+    private void startSocket(){
+        panel1.panelPrint("nigga!");
+        Socket com = new Socket(panel1);
+        Thread comT = new Thread(com);
+        comT.start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private IGrafica.Panel panel1;
