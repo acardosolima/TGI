@@ -90,11 +90,17 @@ public class Frame extends javax.swing.JFrame {
     }
     
     private void startSocket(){
-        panel1.panelPrint("nigga!");
-        Socket com = new Socket(panel1);
+        com = new Socket(panel1);
         Thread comT = new Thread(com);
         comT.start();
     }
+    
+    public static void sendSocket(int dir){
+        //System.out.println(dir);
+        com.mover(dir);
+    }
+    
+    static private Socket com;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private IGrafica.Panel panel1;
     // End of variables declaration//GEN-END:variables

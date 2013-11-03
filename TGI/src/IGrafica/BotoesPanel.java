@@ -4,7 +4,10 @@
  */
 package IGrafica;
 
+import java.awt.event.KeyEvent;
+import javax.swing.InputMap;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 /**
  *
@@ -45,12 +48,22 @@ public class BotoesPanel extends javax.swing.JPanel {
                 esquerdaButtonActionPerformed(evt);
             }
         });
+        esquerdaButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BotoesPanel.this.keyPressed(evt);
+            }
+        });
         add(esquerdaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
 
         cimaButton.setText("↑");
         cimaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cimaButtonActionPerformed(evt);
+            }
+        });
+        cimaButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BotoesPanel.this.keyPressed(evt);
             }
         });
         add(cimaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, -1));
@@ -61,12 +74,22 @@ public class BotoesPanel extends javax.swing.JPanel {
                 direitaButtonActionPerformed(evt);
             }
         });
+        direitaButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BotoesPanel.this.keyPressed(evt);
+            }
+        });
         add(direitaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
         baixoButton.setText("↓");
         baixoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 baixoButtonActionPerformed(evt);
+            }
+        });
+        baixoButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BotoesPanel.this.keyPressed(evt);
             }
         });
         add(baixoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
@@ -87,6 +110,10 @@ public class BotoesPanel extends javax.swing.JPanel {
     private void esquerdaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esquerdaButtonActionPerformed
         JOptionPane.showMessageDialog(esquerdaButton.getTopLevelAncestor(), "Movimento pra esquerda!", "Movimento!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_esquerdaButtonActionPerformed
+
+    private void keyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressed
+        Frame.sendSocket(evt.getKeyCode());
+    }//GEN-LAST:event_keyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton baixoButton;

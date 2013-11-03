@@ -4,8 +4,11 @@
  */
 package IGrafica;
 
+import com.sun.imageio.plugins.jpeg.JPEGImageReader;
+import com.sun.imageio.plugins.jpeg.JPEGImageReaderSpi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.spi.ImageReaderSpi;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
