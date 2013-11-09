@@ -33,6 +33,8 @@ public class Socket implements Runnable{
     private IGrafica.Panel outTextPane;
     private HashMap dirs;
     
+    private ByteImage img;
+    
     public Socket(IGrafica.Panel outTextPane){
         this.receive = new byte[1500];
         this.send = new byte[1500];
@@ -55,7 +57,8 @@ public class Socket implements Runnable{
     
     public void listen(){
         this.outTextPane.panelPrint("Listening");
-        while (true) {
+        int i = 0;
+        while(true){
             try {
                 socket.receive(packet);
                 this.sendIP = packet.getAddress();
@@ -63,8 +66,10 @@ public class Socket implements Runnable{
             } catch (IOException ex) {
                 Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
             }
-            String msg = new String(packet.getData(), 0, packet.getLength());
-            this.outTextPane.panelPrint(msg);
+            if(packet.getLength() > 0){
+                System.out.println("pkg :" + (i++));
+                this.handlePacket(packet);
+            }
         }
     }
     
@@ -87,6 +92,16 @@ public class Socket implements Runnable{
         }       
             
     }
+    
+    private void handlePacket(DatagramPacket pkg){
+        //String msg = new String(pkg.getData(), 0, pkg.getLength());
+        switch(new String(pkg.getData(), 0, pkg.getLength())){
+            case "in": this.outTextPane.panelPrint("populando");img = new ByteImage();break;
+            case "fi": this.outTextPane.panelPrint("gerando");img.gerar();break;
+            default: img.popular(pkg.getData(), pkg.getLength()); break;
+        }
+    }
+    @Override
     public void run(){
         this.outTextPane.panelPrint("Preparing to run");
         this.listen();
