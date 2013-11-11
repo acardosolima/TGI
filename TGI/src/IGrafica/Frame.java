@@ -36,6 +36,8 @@ public class Frame extends javax.swing.JFrame {
         setResizable(false);
 
         panel1.setToolTipText("");
+        panel1.setMinimumSize(new java.awt.Dimension(300, 300));
+        panel1.setPreferredSize(new java.awt.Dimension(650, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

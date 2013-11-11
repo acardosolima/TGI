@@ -20,9 +20,8 @@ import java.util.logging.Logger;
 public class Socket implements Runnable{
     private byte[] receive, send;
     private DatagramPacket sendPacket;
-    private DatagramSocket sendSocket;
     private DatagramSocket socket;
-    private DatagramPacket packet;
+    private DatagramPacket receivePacket;
     private InetAddress sendIP = null;
     private int sendPort = 0;
     private IGrafica.Panel outPut;
@@ -33,17 +32,15 @@ public class Socket implements Runnable{
     public Socket(IGrafica.Panel outPut){
         this.receive = new byte[1500];
         this.send = new byte[1500];
-        this.packet = new DatagramPacket(receive, receive.length);
+        this.receivePacket = new DatagramPacket(receive, receive.length);
         this.outPut = outPut;
         dirs = new HashMap();
-        this.outPut.setImage("darksouls18.jpg");
         
         dirs.put(87, 1);    dirs.put(83, 2);    dirs.put(65, 3);
         dirs.put(68, 4);    dirs.put(37, 5);    dirs.put(39, 6);    
         
         try {
             this.outPut.panelPrint("Binding port and setting things up");
-            this.sendSocket = new DatagramSocket();
             this.socket = new DatagramSocket(9999);
         } catch (SocketException ex) {
             Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,15 +53,15 @@ public class Socket implements Runnable{
         int i = 0;
         while(true){
             try {
-                socket.receive(packet);
-                this.sendIP = packet.getAddress();
-                this.sendPort = packet.getPort();
+                socket.receive(receivePacket);
+                this.sendIP = receivePacket.getAddress();
+                this.sendPort = receivePacket.getPort();
             } catch (IOException ex) {
                 Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(packet.getLength() > 0){
+            if(receivePacket.getLength() > 0){
                 System.out.println("pkg :" + (i++));
-                this.handlePacket(packet);
+                this.handlePacket(receivePacket);
             }
         }
     }
@@ -74,7 +71,7 @@ public class Socket implements Runnable{
         this.sendPacket = new DatagramPacket(this.send, this.send.length, this.sendIP, this.sendPort);
         try {
             System.out.println("enviando: " + this.send + " - " + this.send.length + " - " + this.sendIP);
-            this.sendSocket.send(sendPacket);
+            this.socket.send(sendPacket);
         } catch (IOException ex) {
             Logger.getLogger(Socket.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -4,10 +4,7 @@
  */
 package IGrafica;
 
-import java.awt.event.KeyEvent;
-import javax.swing.InputMap;
 import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 
 /**
  *
@@ -96,19 +93,19 @@ public class BotoesPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cimaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cimaButtonActionPerformed
-        JOptionPane.showMessageDialog(cimaButton.getTopLevelAncestor(), "Movimento pra cima!", "Movimento!", JOptionPane.INFORMATION_MESSAGE);
+        Frame.sendSocket(87);
     }//GEN-LAST:event_cimaButtonActionPerformed
 
     private void direitaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direitaButtonActionPerformed
-        JOptionPane.showMessageDialog(direitaButton.getTopLevelAncestor(), "Movimento pra direita!", "Movimento!", JOptionPane.INFORMATION_MESSAGE);
+        Frame.sendSocket(68);
     }//GEN-LAST:event_direitaButtonActionPerformed
 
     private void baixoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixoButtonActionPerformed
-        JOptionPane.showMessageDialog(baixoButton.getTopLevelAncestor(), "Movimento pra trás!", "Movimento!", JOptionPane.INFORMATION_MESSAGE);
+        Frame.sendSocket(83);
     }//GEN-LAST:event_baixoButtonActionPerformed
 
     private void esquerdaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esquerdaButtonActionPerformed
-        JOptionPane.showMessageDialog(esquerdaButton.getTopLevelAncestor(), "Movimento pra esquerda!", "Movimento!", JOptionPane.INFORMATION_MESSAGE);
+        Frame.sendSocket(65);
     }//GEN-LAST:event_esquerdaButtonActionPerformed
 
     private void keyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressed
