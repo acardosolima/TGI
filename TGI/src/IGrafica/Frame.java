@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package IGrafica;
+
 import arduino.Socket;
 
 /**
@@ -31,8 +32,10 @@ public class Frame extends javax.swing.JFrame {
         panel1 = new IGrafica.Panel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Interface de Controle");
+        setTitle("AutoBot");
         setResizable(false);
+
+        panel1.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +83,6 @@ public class Frame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -88,18 +90,17 @@ public class Frame extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void startSocket(){
+
+    private void startSocket() {
         com = new Socket(panel1);
         Thread comT = new Thread(com);
         comT.start();
     }
-    
-    public static void sendSocket(int dir){
-        //System.out.println(dir);
+
+    public static void sendSocket(int dir) {
         com.mover(dir);
     }
-    
+
     static private Socket com;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private IGrafica.Panel panel1;

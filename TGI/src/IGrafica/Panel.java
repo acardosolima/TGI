@@ -4,12 +4,10 @@
  */
 package IGrafica;
 
-import com.sun.imageio.plugins.jpeg.JPEGImageReader;
-import com.sun.imageio.plugins.jpeg.JPEGImageReaderSpi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.spi.ImageReaderSpi;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 
@@ -38,20 +36,51 @@ public class Panel extends javax.swing.JPanel {
         outputScrollPane = new javax.swing.JScrollPane();
         outputTextPane = new javax.swing.JTextPane();
         outputLabel = new javax.swing.JLabel();
-        fotoButton = new javax.swing.JButton();
         botoesPanel1 = new IGrafica.BotoesPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        lglImage = new javax.swing.JLabel();
+
+        setMaximumSize(new java.awt.Dimension(800, 480));
+        setMinimumSize(new java.awt.Dimension(800, 480));
+        setPreferredSize(new java.awt.Dimension(800, 480));
 
         outputTextPane.setEditable(false);
         outputScrollPane.setViewportView(outputTextPane);
 
         outputLabel.setText("Output");
 
-        fotoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cameraIcone.jpg"))); // NOI18N
-        fotoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fotoButtonActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jButton2.setText("→");
+
+        jButton1.setText("←");
+        jButton1.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(27, 27, 27))
+        );
+
+        lglImage.setMaximumSize(new java.awt.Dimension(640, 480));
+        lglImage.setMinimumSize(new java.awt.Dimension(640, 480));
+        lglImage.setPreferredSize(new java.awt.Dimension(640, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -59,39 +88,38 @@ public class Panel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botoesPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lglImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addComponent(outputScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(fotoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botoesPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(outputLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(outputLabel)
+                                .addGap(0, 478, Short.MAX_VALUE))
+                            .addComponent(outputScrollPane))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lglImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botoesPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(outputLabel)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(outputScrollPane)
-                            .addComponent(fotoButton, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fotoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fotoButtonActionPerformed
-        JOptionPane.showMessageDialog(fotoButton.getTopLevelAncestor(), "Olha a foto!", "Foto!", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_fotoButtonActionPerformed
-    public void panelPrint(String msg){
+    public void panelPrint(String msg) {
         Document doc = outputTextPane.getDocument();
         try {
             msg = msg + "\n";
@@ -100,9 +128,22 @@ public class Panel extends javax.swing.JPanel {
             Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public JLabel getImgContainer() {
+        return this.lglImage;
+    }
+
+    public void setImage(String name) {
+        ImageIcon img = new ImageIcon("/home/lucas/" + name);
+        lglImage.setIcon(img);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private IGrafica.BotoesPanel botoesPanel1;
-    private javax.swing.JButton fotoButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lglImage;
     private javax.swing.JLabel outputLabel;
     private javax.swing.JScrollPane outputScrollPane;
     private javax.swing.JTextPane outputTextPane;
